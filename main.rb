@@ -4,6 +4,9 @@ require "pry"
 require "yaml"
 require_relative "lib/library.rb"
 require_relative "lib/staff.rb"
+require_relative "lib/book.rb"
+require_relative "lib/patron.rb"
+
 
 ##              Main METHOD!!!            ##
 
