@@ -28,7 +28,8 @@ def main_menu
 
     while
       choice != "1" && choice != "2" &&
-      choice != "3" && choice != "4" && choice != "5"
+      choice != "3" && choice != "4" &&
+      choice != "5"
       puts "\n\nNot a valid option. Please enter: 1, 2, 3, 4, or 5. Thank you!\n\n"
       choice = gets.chomp.downcase
     end
@@ -62,25 +63,29 @@ end
 
 ## There is input, through gets.chomp.
 
+def view_library
+  [name = "", address = "", phone_number = ""]
+end
+
+
 # libraries_menu method
 
 def libraries_menu
   choice = ""
 
-  while choice != "6"
+  while choice != "5"
     puts "\n\nLibrary Main Menu:\n
     1. Find your Branch
     2. Add new Library
-    3. Show Library
-    4. Edit Library
-    5. Remove Library
-    6. Return to Main Menu\n\n"
+    3. Edit Library
+    4. Remove Library
+    5. Return to Main Menu\n\n"
     puts "Please make a selection. \n\n"
     choice = gets.chomp.downcase
 
     while choice != "1" && choice != "2" && choice != "3" &&
-          choice != "4" && choice != "5" && choice != "6"
-          puts "\n\nNot a valid option. Please enter: 1, 2, 3, 4, 5, or 6 Thank you!\n\n"
+          choice != "4" && choice != "5"
+          puts "\n\nNot a valid option. Please enter: 1, 2, 3, 4, or 5.Thank you!\n\n"
           choice = gets.chomp.downcase
     end
 
@@ -89,12 +94,10 @@ def libraries_menu
     elsif choice == "2"
       library_new
     elsif choice == "3"
-      library_show
-    elsif choice == "4"
       library_edit
-    elsif choice == "5"
+    elsif choice == "4"
       library_destroy
-    elsif choice == "6"
+    elsif choice == "5"
       puts "Thanks, come again!"
     end
   end
@@ -120,7 +123,7 @@ def library_index
     end
 
     if    choice == "1"
-      display_libraries
+      view_library
     elsif choice == "2"
       puts "Thanks, come again!"
     end
@@ -147,13 +150,41 @@ def library_new
     end
 
     if    choice == "1"
-      create_library
+      create_library.each { |view_library| puts view_library }
     elsif choice == "2"
       puts "Thanks, come again!"
     end
   end
 end
 
+##+++++++++++++++++++++++++++++##
+
+# library_edit method. This option will allow user to edit a library
+
+def library_edit
+  choice = ""
+
+  while choice != "2"
+    puts "\n\nEdit Library:\n
+    1. Pick Library
+    2. Return to Main Menu\n\n"
+    puts "Please make a selection.\n\n"
+    choice = gets.chomp.downcase
+
+    while choice != "1" && choice != "2"
+      puts "\n\nNot a valid option. Please enter: 1 or 2. Thank you!\n\n"
+      choice = gets.chomp.downcase
+    end
+
+    if    choice == "1"
+      view_library.each { |view_library| puts view_library }
+    elsif choice == "2"
+      puts "Thanks, come again!"
+    end
+
+  end
+
+end
 
 ## Unprompted greeting. The first thing that a user should see.
 
@@ -161,7 +192,7 @@ puts "\n\nHello and welcome to Library Manager 5000!\n\n"
 
 ##########################################
 
-## Beginning of called methods.
+## Call methods.
 
 main_menu
 
@@ -174,19 +205,3 @@ puts "\n\nGoodbye!\n\n"
 ##########################################
 
 binding.pry
-
-
-#choice = gets.chomp
-#
-#while choice != "1" && choice != "2" && choice != "3"
-#  puts "\n\nThat is not a valid option. Please enter: 1, 2, or 3.\n\n"
-#  choice = gets.chomp.downcase
-#end
-#
-#if choice == "1"
-#  puts "List of Libraries"
-#elsif choice == "2"
-#  puts "Add a Library"
-#elsif choice == "3"
-#  puts "Go to Options Menu"
-#end
