@@ -3,6 +3,7 @@ require "active_record"
 require "pry"
 require "yaml"
 require_relative "lib/library.rb"
+require_relative "lib/staff.rb"
 
 ##              Main METHOD!!!            ##
 
